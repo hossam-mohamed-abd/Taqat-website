@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+/* Configure dark mode for manual toggling */
+@variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+body {
+  background:
+    radial-gradient(ellipse 80% 55% at 75% -8%, var(--glow-primary), transparent 65%),
+    radial-gradient(ellipse 55% 48% at -5% 95%, var(--glow-accent), transparent 60%),
+    radial-gradient(ellipse 50% 42% at 50% 52%, var(--glow-primary), transparent 82%),
+    var(--color-surface);
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-stroke);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(14px);
+}
+
+.glass-panel {
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--glass-bg) 70%, transparent),
+    color-mix(in srgb, var(--glass-bg) 35%, transparent)
+  );
+  border: 1px solid color-mix(in srgb, var(--glass-stroke) 90%, transparent);
+  backdrop-filter: blur(20px);
+}
+
+.gradient-text {
+  background-image: linear-gradient(120deg, var(--color-primary) 10%, var(--color-accent) 55%, #7c3aed 90%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.35) 45%, transparent 70%);
+  background-size: 200% 100%;
+  animation: shimmerMove 2.8s linear infinite;
+  pointer-events: none;
+}
+
+.mesh-bg {
+  position: relative;
+  isolation: isolate;
+}
+
+.mesh-bg::before,
+.mesh-bg::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  opacity: 0.55;
+  z-index: -1;
+  animation: meshShift 10s ease-in-out infinite;
+}
+
+.mesh-bg::before {
+  width: 320px;
+  height: 320px;
+  top: -80px;
+  right: -100px;
+  background: color-mix(in srgb, var(--color-primary) 65%, transparent);
+}
+
+.mesh-bg::after {
+  width: 280px;
+  height: 280px;
+  bottom: -70px;
+  left: -90px;
+  animation-delay: 1.2s;
+  background: color-mix(in srgb, var(--color-accent) 45%, transparent);
+}
+
+.noise-overlay {
+  position: relative;
+}
+
+.noise-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0);
+  background-size: 3px 3px;
+}
+
+.soft-grid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+.pill-btn {
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 35%, transparent);
+  background: linear-gradient(120deg, color-mix(in srgb, var(--color-primary) 75%, #111827), color-mix(in srgb, var(--color-primary-soft) 88%, #0f172a));
+  color: #ffffff;
+  font-weight: 700;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pill-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 24px -18px rgba(99, 102, 241, 0.7);
+}
+
+.surface-border {
+  border: 1px solid color-mix(in srgb, var(--glass-stroke) 85%, transparent);
+}
+
+.fade-up {
+  animation: revealUp 0.55s ease both;
+}
+
+.float-soft {
+  animation: floatUpDown 5.8s ease-in-out infinite;
+}
+
+.pulse-ring {
+  animation: pulseRing 3s ease infinite;
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--color-primary) 65%, #334155) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: linear-gradient(var(--color-primary), color-mix(in srgb, var(--color-secondary) 55%, black));
+}
+
+
